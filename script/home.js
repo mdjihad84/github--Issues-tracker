@@ -1,12 +1,12 @@
-let allIssues = []; // এখানে ডাটা জমা থাকবে ফিল্টার করার জন্য
+let allIssues = [];
 
 const apiCard = () => {
   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      allIssues = data.data; // ১. ফেচ করা ডাটা গ্লোবাল ভ্যারিয়েবলে সেভ করো
-      serverData(allIssues); // ২. শুরুতে সব ডাটা দেখাও
+      allIssues = data.data;
+      serverData(allIssues);
     });
 };
 
@@ -63,10 +63,10 @@ const filterByStatus = (status) => {
     status === "all"
       ? allIssues
       : allIssues.filter((item) => item.status === status);
-  serverData(filteredIssues); // তোমার ফাংশন নাম ছিল serverData, তাই এটাই কল করো
+  serverData(filteredIssues); 
 };
 
-// ইভেন্ট লিসেনার
+
 document
   .getElementById("btn-all")
   .addEventListener("click", () => filterByStatus("all"));
