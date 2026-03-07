@@ -47,15 +47,15 @@
     <section class="max-w-[1200px] mx-auto mt-10 space-y-6">
         <div class="flex gap-2 p-4 bg-white rounded-lg shadow-sm">
   
-            <button onclick="apiCard()" class="btn bg-[#5A00FF] hover:bg-[#4800CC] text-white border-none min-h-0 h-10 px-8">
+            <button id="btn-all" onclick="apiCard()" class="btn bg-[#5A00FF] hover:bg-[#4800CC] text-white border-none min-h-0 h-10 px-8">
                 All
             </button>
 
-            <button class="btn btn-outline border-gray-200 text-gray-500 hover:bg-gray-100 hover:text-gray-700 min-h-0 h-10 px-6">
+            <button id="btn-open" class="btn btn-outline border-gray-200 text-gray-500 hover:bg-gray-100 hover:text-gray-700 min-h-0 h-10 px-6">
                 Open
             </button>
 
-            <button class="btn btn-outline border-gray-200 text-gray-500 hover:bg-gray-100 hover:text-gray-700 min-h-0 h-10 px-6">
+            <button id="btn-closed" class="btn btn-outline border-gray-200 text-gray-500 hover:bg-gray-100 hover:text-gray-700 min-h-0 h-10 px-6">
                 Closed
             </button>
         </div>
@@ -68,7 +68,7 @@
                     <i class="fa-solid fa-bahai text-2xl"></i> 
                 </div>
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-800 leading-none">50 Issues</h2>
+                    <h2 id="total-issue-count" class="text-2xl font-bold text-slate-800 leading-none">50 Issues</h2>
                     <p class="text-slate-500 text-sm mt-1">Track and manage your project issues</p>
                 </div>
             </div>
