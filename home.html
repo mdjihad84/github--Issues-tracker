@@ -26,6 +26,13 @@
 </head>
 
 <body class="bg-[#F8FAFC]">
+    <!-- == Loding Spanner added == -->
+    <div id="global-loader" class="hidden fixed inset-0 bg-white/70 backdrop-blur-sm z-[9999] flex items-center justify-center">
+        <div class="flex flex-col items-center">
+            <span class="loading loading-spinner loading-lg text-[#5A00FF]"></span>
+            <p class="mt-4 text-slate-500 font-bold animate-pulse text-xs uppercase tracking-widest">Processing Data...</p>
+        </div>
+    </div>
     <!-- == Home Header Area == -->
     <section>
         <div class="flex justify-between px-20 navbar bg-base-100 shadow-sm">
@@ -34,9 +41,9 @@
                 <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
             </div>
             <div class="">
-                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                <input id="search-input" type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
                 <div class="dropdown dropdown-end">
-                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+                    <button id="search-btn" class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
                 </div>
             </div>
         </div>
@@ -47,15 +54,15 @@
     <section class="max-w-[1200px] mx-auto mt-10 space-y-6">
         <div class="flex gap-2 p-4 bg-white rounded-lg shadow-sm">
   
-            <button id="btn-all" onclick="apiCard()" class="btn bg-[#5A00FF] hover:bg-[#4800CC] text-white border-none min-h-0 h-10 px-8">
+            <button id="btn-all" onclick="apiCard()" class="filter-btn btn btn-soft btn-primary" text-white border-none min-h-0 h-10 px-8">
                 All
             </button>
 
-            <button id="btn-open" class="btn btn-outline border-gray-200 text-gray-500 hover:bg-gray-100 hover:text-gray-700 min-h-0 h-10 px-6">
+            <button id="btn-open" class="filter-btn btn btn-soft btn-primary min-h-0 h-10 px-6">
                 Open
             </button>
 
-            <button id="btn-closed" class="btn btn-outline border-gray-200 text-gray-500 hover:bg-gray-100 hover:text-gray-700 min-h-0 h-10 px-6">
+            <button id="btn-closed" class="filter-btn btn btn-soft btn-primary min-h-0 h-10 px-6">
                 Closed
             </button>
         </div>
@@ -89,6 +96,18 @@
 
         </div>
     </section>
+
+    <dialog id="issue_modal" class="modal">
+        <div class="modal-box max-w-2xl p-0 overflow-hidden rounded-3xl">
+            <div id="modal-content" class="p-9"></div>
+            
+            <div class="modal-action p-6 bg-slate-50">
+            <form method="dialog">
+                <button class="btn btn-primary text-white">Close</button>
+            </form>
+            </div>
+        </div>
+    </dialog>>
 
   
     
