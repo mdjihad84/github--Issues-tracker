@@ -4,6 +4,7 @@ let allIssues = [];
 // Fetches all issue data from the server on page load.
 const apiCard = () => {
   showLoader();
+
   const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
   fetch(url)
     .then((res) => res.json())
@@ -13,7 +14,6 @@ const apiCard = () => {
       hideLoader();
     });
 };
-
 
 // Generates dynamic HTML cards and updates the total issue counter.
 const serverData = (recevedData) => {
@@ -29,7 +29,6 @@ const serverData = (recevedData) => {
   recevedData.forEach((item) => {
     const createElement = document.createElement("div");
     createElement.innerHTML = `
-
         <div class="max-w-6xl mx-auto mb-4">
             <div onclick="openModal('${item.id}')" class="cursor-pointer bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow 
                 ${item.status === "closed" ? "border-t-4 border-purple-500" : "border-t-4 border-emerald-500"}">
@@ -66,7 +65,6 @@ const serverData = (recevedData) => {
   });
 };
 
-
 // Filtering Logic
 const filterByStatus = (status) => {
   const filteredIssues =
@@ -74,14 +72,12 @@ const filterByStatus = (status) => {
     serverData(filteredIssues); 
 };
 
-
 // Event Listeners for Filters
 document.getElementById("btn-all").addEventListener("click", () => filterByStatus("all"));
 
 document.getElementById("btn-open").addEventListener("click", () => filterByStatus("open"));
 
 document.getElementById("btn-closed").addEventListener("click", () => filterByStatus("closed"));
-
 
 
 // Search Functionality
@@ -119,7 +115,6 @@ filterButtons.forEach(button => {
     });
 });
 
-
 // Modal Detail Handler
 const openModal = (id) => {
 
@@ -137,13 +132,15 @@ const openModal = (id) => {
               <span class="badge badge-success">${modalData.status}</span>
               <span class="badge badge-error">${modalData.priority}</span>
           </div>
+          
           <p class="text-slate-500 mb-6">${modalData.description}</p>
-          <div class="flex flex-wrap gap-2 mb-5">
-              ${modalData.labels.map((label) => `
-                  <div class="bg-yellow-500 border-slate-200 text-black text-[12px] pr-3 rounded-lg gap-1.5 uppercase font-bold h-auto">
-                        <i class="fa-solid ${label.toLowerCase().includes("bug") ? "fa-bug text-red-400" : "fa-circle-info text-amber-400"}"></i>${label}
-                  </div>`).join("")}
+
+          <div class="flex flex-wrap gap-2 mb-5">${modalData.labels.map((label) => `
+                <div class="bg-yellow-500 border-slate-200 text-black text-[12px] pr-3 rounded-lg gap-1.5 uppercase font-bold h-auto">
+                    <i class="fa-solid ${label.toLowerCase().includes("bug") ? "fa-bug text-red-400" : "fa-circle-info text-amber-400"}"></i>${label}
+                </div>`).join("")}
           </div>
+          
           <div class="p-4 bg-slate-50 rounded-lg">
               <p><strong>Assignee:</strong> ${modalData.assignee || "None"}</p>
               <p><strong>Created:</strong> ${new Date(modalData.createdAt).toLocaleDateString()}</p>
