@@ -144,12 +144,12 @@ const openModal = (id) => {
             )
             .join("")}
           </div>
-          <div class="p-4 bg-slate-50 rounded-lg flex">
-                <div class="">
+          <div class="p-4 bg-slate-50 rounded-lg flex items-center">
+                <div class="space-y-3">
                     <p><strong>Assignee:</strong> ${modalData.assignee || "None"}</p>
                     <p><strong>Created:</strong> ${new Date(modalData.createdAt).toLocaleDateString()}</p>
                 </div>
-                <div class="mb-2 ml-32">
+                <div class="ml-32 space-y-3">
                     <p>Priority:</p>
                     <span class="badge badge-error">${modalData.priority}</span>
                 </div>
